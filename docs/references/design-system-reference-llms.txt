@@ -1,0 +1,2 @@
+Design system reference notes for LLM-friendly consumption.
+Add curated component, spacing, typography, and interaction guidance here.

@@ -1,0 +1,39 @@
+{
+  "name": "@pipiclaw/shared",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./config/*": {
+      "types": "./dist/config/*.d.ts",
+      "import": "./dist/config/*.js",
+      "require": "./dist/config/*.cjs",
+      "default": "./dist/config/*.js"
+    },
+    "./rpc/*": {
+      "types": "./dist/rpc/*.d.ts",
+      "import": "./dist/rpc/*.js",
+      "require": "./dist/rpc/*.cjs",
+      "default": "./dist/rpc/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@pipiclaw/desktop",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Electron desktop shell for pipiclaw monorepo",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "dependencies": {
+    "@pipiclaw/agent-core": "workspace:*",
+    "@pipiclaw/shared": "workspace:*"
+  }
+}

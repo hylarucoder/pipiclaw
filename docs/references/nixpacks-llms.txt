@@ -1,0 +1,2 @@
+Nixpacks reference notes for LLM-friendly consumption.
+Add deployment assumptions, buildpack caveats, and project-specific commands here.

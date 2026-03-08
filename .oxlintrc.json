@@ -1,0 +1,93 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "import", "vitest", "node"],
+  "ignorePatterns": [
+    "node_modules/**",
+    "dist/**",
+    "out/**",
+    "build/**",
+    "release/**",
+    "playwright-report/**",
+    "test-results/**",
+    "blob-report/**",
+    "*.tsbuildinfo"
+  ],
+  "overrides": [
+    {
+      "files": ["packages/renderer/**/*.{ts,tsx}"],
+      "env": {
+        "browser": true
+      },
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "@pipiclaw/desktop",
+                  "@pipiclaw/desktop/*",
+                  "apps/desktop",
+                  "apps/desktop/*",
+                  "**/apps/desktop/**"
+                ],
+                "message": "packages/renderer 不能依赖 desktop 壳层，请通过 preload/shared contract 暴露能力。"
+              },
+              {
+                "group": [
+                  "@renderer/components/webui/legacy",
+                  "@renderer/components/webui/legacy/*",
+                  "**/components/webui/legacy/**"
+                ],
+                "message": "packages/renderer 不要再依赖 legacy webui 路径，请改用 @renderer/features/webui。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["packages/agent-core/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["react", "react/*", "react-dom", "react-dom/*", "electron"],
+                "message": "packages/agent-core 不能依赖 React 或 Electron。"
+              },
+              {
+                "group": [
+                  "@renderer",
+                  "@renderer/*",
+                  "@pipiclaw/renderer",
+                  "@pipiclaw/renderer/*",
+                  "features/webui",
+                  "features/webui/*",
+                  "apps/desktop",
+                  "apps/desktop/*",
+                  "**/apps/desktop/**"
+                ],
+                "message": "packages/agent-core 只能面向 shared/ports/runtime contract，不能反向依赖 renderer 或 desktop。"
+              }
+            ]
+          }
+        ],
+        "no-restricted-globals": ["error", "window", "document"]
+      }
+    },
+    {
+      "files": ["apps/desktop/src/main/**/*.{ts,tsx}", "apps/desktop/src/preload/**/*.{ts,tsx}", "scripts/**/*.mjs"],
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": ["**/*.test.{ts,tsx}", "e2e/**/*.ts"],
+      "env": {
+        "node": true
+      }
+    }
+  ]
+}

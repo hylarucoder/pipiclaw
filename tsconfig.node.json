@@ -1,0 +1,15 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+  "include": [
+    "packages/renderer/vite.config.ts",
+    "apps/desktop/src/main/**/*",
+    "apps/desktop/src/preload/**/*",
+    "apps/desktop/tsdown.config.ts",
+    "packages/shared/src/**/*",
+    "packages/agent-core/src/**/*"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "types": ["node"]
+  }
+}

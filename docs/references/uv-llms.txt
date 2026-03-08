@@ -1,0 +1,2 @@
+uv reference notes for LLM-friendly consumption.
+Add package-management, virtualenv, and task-runner guidance here if uv is adopted later.

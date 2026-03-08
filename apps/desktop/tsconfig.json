@@ -1,0 +1,8 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [{ "path": "../../packages/shared" }, { "path": "../../packages/agent-core" }]
+}
